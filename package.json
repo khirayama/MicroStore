@@ -1,6 +1,6 @@
 {
   "name": "micro-store",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "micro store in es6 for client.",
   "main": "lib/MicroStore.js",
   "files": [
@@ -15,6 +15,8 @@
     "url": "git+https://github.com/khirayama/MicroStore.git"
   },
   "keywords": [
+    "framework",
+    "mvc",
     "model",
     "store",
     "flux",

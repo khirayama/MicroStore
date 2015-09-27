@@ -45,10 +45,12 @@ new SomeStore(options);
 - localStorage
 
 ## Example
+if you use event emitter, I prepared [MicroEmitter](https://github.com/khirayama/MicroEmitter) for this.
+Recommnd: [MicroEmitter](https://github.com/khirayama/MicroEmitter)
+
 ```TodoStore.es6.js
 import MicroStore from 'micro-store';
 import { EventEmitter } from 'events';
-
 
 let AppDispatcher = new EventEmitter(); // singleton
 

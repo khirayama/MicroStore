@@ -2,8 +2,6 @@ import 'babel/polyfill';
 import MicroEmitter from 'micro-emitter';
 
 const EVENT_CHANGE = 'CHANGE_STORE';
-// FIXME: for test...
-// let localStorage, window; if (!window) localStorage = localStorage || {getItem: () => { return '{}'; }, setItem: () => {}};
 
 export default class MicroStore extends MicroEmitter {
   constructor(options = { localStorage: true }) {
