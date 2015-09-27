@@ -42,8 +42,6 @@ let options = {
 new SomeStore(options);
 ```
 
-- localStorage
-
 ## Example
 if you use event emitter, I prepared [MicroEmitter](https://github.com/khirayama/MicroEmitter) for this.
 Recommnd: [MicroEmitter](https://github.com/khirayama/MicroEmitter)
