@@ -3,7 +3,7 @@ import MicroEmitter from 'micro-emitter';
 
 const EVENT_CHANGE = 'CHANGE_STORE';
 
-if (global) global.localStorage = { getItem: () => { return '{}'; }, setItem: () => {} };
+if (global) global.localStorage = global.localStorage || { getItem: () => { return '{}'; }, setItem: () => {} };
 
 export default class MicroStore extends MicroEmitter {
   constructor(options = { localStorage: true }) {
