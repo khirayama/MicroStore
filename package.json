@@ -31,5 +31,8 @@
   "homepage": "https://github.com/khirayama/MicroStore#readme",
   "devDependencies": {
     "babel": "^5.8.23"
+  },
+  "dependencies": {
+    "micro-emitter": "^0.1.1"
   }
 }

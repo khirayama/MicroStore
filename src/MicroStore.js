@@ -1,5 +1,5 @@
 import 'babel/polyfill';
-import MicroEmitter from './MicroEmitter';
+import MicroEmitter from 'micro-emitter';
 
 const EVENT_CHANGE = 'CHANGE_STORE';
 // FIXME: for test...
