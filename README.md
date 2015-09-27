@@ -75,6 +75,15 @@ class TodoStore extends MicroStore {
 export default new TodoStore();
 
 class TodoItemComponent {
+  constructor() {
+    this.todos = TodoStore.get();
+
+    // when TodoStore updated, call this.
+    TodoStore.addChangeListener(this.render());
+
+    // when TodoStore emit custom event(ex: PASS_VALIDATION), call this.
+    TodoStore.addCustomEventListener('PASS_VALIDATION', this.fetch());
+  }
   /* ... */
   onClick() {
 
@@ -85,4 +94,14 @@ class TodoItemComponent {
     AppDispatcher.emit('TODO_CREATE', { text: 'Hello MicroStore' });
   }
 }
+```
+
+```sample.es6.js
+TodoStore.get(); // get all data
+TodoStore.get(id); // get an item
+TodoStore.order('text').get();
+TodoStore.order('text', true).get(); // reverse
+TodoStore.where({ completed: true }).get();
+TodoStore.limit(3).get();
+TodoStore.where({ completed: true }).order('text').limit(5).get();
 ```

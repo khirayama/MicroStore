@@ -1,6 +1,6 @@
 {
   "name": "micro-store",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "micro store in es6 for client.",
   "main": "lib/MicroStore.js",
   "files": [
@@ -15,11 +15,8 @@
     "url": "git+https://github.com/khirayama/MicroStore.git"
   },
   "keywords": [
-    "eventemitter",
-    "emitter",
-    "event",
-    "events",
-    "browser",
+    "model",
+    "store",
     "flux",
     "react"
   ],
