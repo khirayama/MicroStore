@@ -1,0 +1,35 @@
+{
+  "name": "micro-store",
+  "version": "0.1.0",
+  "description": "micro store in es6.",
+  "main": "lib/MicroStore.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "babel src --out-dir lib --source-maps-inline",
+    "watch": "babel src --out-dir lib --watch --source-maps-inline"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khirayama/MicroStore.git"
+  },
+  "keywords": [
+    "eventemitter",
+    "emitter",
+    "event",
+    "events",
+    "browser",
+    "flux",
+    "react"
+  ],
+  "author": "khirayama",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/khirayama/MicroStore/issues"
+  },
+  "homepage": "https://github.com/khirayama/MicroStore#readme",
+  "devDependencies": {
+    "babel": "^5.8.23"
+  }
+}
