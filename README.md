@@ -46,7 +46,7 @@ new SomeStore(options);
 if you use event emitter, I prepared [MicroEmitter](https://github.com/khirayama/MicroEmitter) for this.
 Recommnd: [MicroEmitter](https://github.com/khirayama/MicroEmitter)
 
-```javascript:TodoStore.es6.js
+```javascript
 import MicroStore from 'micro-store';
 import { EventEmitter } from 'events';
 
@@ -96,7 +96,7 @@ class TodoItemComponent {
 }
 ```
 
-```javascript:sample.es6.js
+```javascript
 TodoStore.get(); // get all data
 TodoStore.get(id); // get an item
 TodoStore.order('text').get();
