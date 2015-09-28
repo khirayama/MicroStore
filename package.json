@@ -1,6 +1,6 @@
 {
   "name": "micro-store",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "micro store in es6 for client.",
   "main": "lib/MicroStore.js",
   "files": [

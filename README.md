@@ -10,7 +10,7 @@ I need micro store for learning some apps.
 $ npm install micro-store
 ```
 
-```es6.js
+```javascript
 import MicroStore from 'micro-store';
 ```
 
@@ -34,7 +34,7 @@ import MicroStore from 'micro-store';
 
 ## Options
 
-```
+```javascript
 let options = {
   localStorage: ture, // bool(default: true)
 };
@@ -46,7 +46,7 @@ new SomeStore(options);
 if you use event emitter, I prepared [MicroEmitter](https://github.com/khirayama/MicroEmitter) for this.
 Recommnd: [MicroEmitter](https://github.com/khirayama/MicroEmitter)
 
-```TodoStore.es6.js
+```javascript:TodoStore.es6.js
 import MicroStore from 'micro-store';
 import { EventEmitter } from 'events';
 
@@ -96,7 +96,7 @@ class TodoItemComponent {
 }
 ```
 
-```sample.es6.js
+```javascript:sample.es6.js
 TodoStore.get(); // get all data
 TodoStore.get(id); // get an item
 TodoStore.order('text').get();
