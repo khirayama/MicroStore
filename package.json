@@ -1,6 +1,6 @@
 {
   "name": "micro-store",
-  "version": "0.1.13",
+  "version": "0.2.0",
   "description": "micro store in es6 for client.",
   "main": "lib/MicroStore.js",
   "files": [
@@ -30,6 +30,6 @@
   "homepage": "https://github.com/khirayama/MicroStore#readme",
   "dependencies": {
     "babel": "^5.8.23",
-    "micro-emitter": "^1.0.1"
+    "micro-emitter": "^1.0.5"
   }
 }
