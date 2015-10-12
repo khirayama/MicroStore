@@ -10,9 +10,39 @@ export default class MicroStore extends MicroEmitter {
     super();
     this._localStorage = options.localStorage;
     this._data = (this._localStorage) ? this._load() || {} : {};
-    this._tmp = [];
+    this._filteredData = [];
     this._filtering = false;
     this.defaults = {};
+  }
+
+  setData(key, value) {
+    if (
+      key === 'data' ||
+      key === 'localStorage' ||
+      key === 'filteredData' ||
+      key === 'filtering' ||
+      key === 'defaults'
+    ) {
+      console.warn('Cant set value with this key. This key is reserved word in MicroStore.');
+      return;
+    }
+    this[`_${key}`] = value;
+    this.dispatchChange();
+    if (this._localStorage) this._save();
+  }
+
+  getData(key) {
+    if (
+      key === 'data' ||
+      key === 'localStorage' ||
+      key === 'filteredData' ||
+      key === 'filtering' ||
+      key === 'defaults'
+    ) {
+      console.warn('Cant get data by this key. This key is reserved word in MicroStore');
+      return;
+    }
+    return this._loadValue(key) || this[`_${key}`];
   }
 
   // CRUD method
@@ -40,21 +70,12 @@ export default class MicroStore extends MicroEmitter {
 
   get(id) {
     if (id) return this._data[id];
-    return this._getAll();
+    this._filtering = false;
+    return this._o2a(this._filteredData);
   }
 
-  _getAll() {
-    let data = [];
-    let targetData;
-
-    if (this._filtering) {
-      this._filtering = false;
-      targetData = this._tmp;
-    } else {
-      targetData = this._data;
-    }
-    data = this._o2a(targetData);
-    return data;
+  all() {
+    return this._o2a(this._data);
   }
 
   _save() {
@@ -63,19 +84,27 @@ export default class MicroStore extends MicroEmitter {
     localStorage.setItem(key, JSON.stringify(this._data));
   }
 
+  _saveValue(key) {
+    localStorage.setItem(`${this.constructor.name}_${key}`, JSON.stringify(this._data));
+  }
+
   _load() {
     const key = this.constructor.name;
 
     return JSON.parse(localStorage.getItem(key));
   }
 
+  _loadValue(key) {
+    localStorage.getItem(`${this.constructor.name}_${key}`);
+  }
+
   order(key, reverse) {
     if (!this._filtering) {
       this._filtering = true;
-      this._tmp = this._o2a(this._data);
+      this._filteredData = this._o2a(this._data);
     }
 
-    this._tmp.sort((itemA, itemB) => {
+    this._filteredData.sort((itemA, itemB) => {
       const valueX = itemA[key];
       const valueY = itemB[key];
 
@@ -94,13 +123,13 @@ export default class MicroStore extends MicroEmitter {
   where(statement) {
     if (!this._filtering) {
       this._filtering = true;
-      this._tmp = this._o2a(this._data);
+      this._filteredData = this._o2a(this._data);
     }
 
     const data = [];
-    for (const id in this._tmp) {
+    for (const id in this._filteredData) {
       if (!id) break;
-      const _data = this._tmp[id];
+      const _data = this._filteredData[id];
 
       for (const key in statement) {
         if (!key) break;
@@ -108,21 +137,21 @@ export default class MicroStore extends MicroEmitter {
         if (_data[key] === value) data.push(_data);
       }
     }
-    this._tmp = data;
+    this._filteredData = data;
     return this;
   }
 
   limit(num) {
     if (!this._filtering) {
       this._filtering = true;
-      this._tmp = this._o2a(this._data);
+      this._filteredData = this._o2a(this._data);
     }
 
     const data = [];
     for (let index = 0; index < num; index++) {
-      data.push(this._tmp[index]);
+      data.push(this._filteredData[index]);
     }
-    this._tmp = data;
+    this._filteredData = data;
     return this;
   }
 

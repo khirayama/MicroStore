@@ -31,6 +31,8 @@ import MicroStore from 'micro-store';
 - addCustomEventListener
 - removeCustomEventListener
 - register
+- setData
+- getData
 
 ## Options
 
@@ -84,8 +86,13 @@ class TodoItemComponent {
     // when TodoStore emit custom event(ex: PASS_VALIDATION), call this.
     TodoStore.addCustomEventListener('PASS_VALIDATION', this.fetch());
   }
+  componentDidMount() {
+    const isCreatModalShowing = TodoStore.getData('isCreatModalShowing');
+    if (isCreatModalShowing) this.someaction();
+  }
   /* ... */
   onClick() {
+    TodoStore.setData('isCreatModalShowing', true);
 
     // if you don't use actions or dispatcher
     TodoStore.create({ text: 'Hello MicroStore' });

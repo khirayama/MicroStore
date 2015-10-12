@@ -1,6 +1,6 @@
 {
   "name": "micro-store",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "micro store in es6 for client.",
   "main": "lib/MicroStore.js",
   "files": [
@@ -8,11 +8,16 @@
   ],
   "scripts": {
     "build": "babel src --out-dir lib --source-maps-inline",
-    "watch": "babel src --out-dir lib --watch --source-maps-inline"
+    "watch": "babel src --out-dir lib --watch --source-maps-inline",
+    "lint": "eslint ./src --ext=js",
+    "test": "mocha --compilers js:espower-babel/guess test/**/*.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/khirayama/MicroStore.git"
+  },
+  "eslintConfig": {
+    "extends": "airbnb"
   },
   "keywords": [
     "framework",
@@ -30,6 +35,13 @@
   "homepage": "https://github.com/khirayama/MicroStore#readme",
   "dependencies": {
     "babel": "^5.8.23",
-    "micro-emitter": "^1.0.5"
+    "babel-eslint": "^4.1.3",
+    "espower-babel": "^3.3.0",
+    "eslint": "^1.6.0",
+    "eslint-config-airbnb": "0.1.0",
+    "eslint-plugin-react": "^3.5.1",
+    "mocha": "^2.3.3",
+    "micro-emitter": "^1.0.5",
+    "power-assert": "^1.0.1"
   }
 }
