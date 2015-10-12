@@ -1,4 +1,4 @@
-import 'babel/polyfill';
+import assign from 'object-assign';
 import MicroEmitter from 'micro-emitter';
 
 const EVENT_CHANGE = 'CHANGE_STORE';
@@ -50,14 +50,14 @@ export default class MicroStore extends MicroEmitter {
     const now = new Date();
     const id = (+now + Math.floor(Math.random() * 999999)).toString(36);
 
-    this._data[id] = Object.assign({}, { id: id, createdAt: now, updatedAt: now }, this.defaults, entity);
+    this._data[id] = assign({}, { id: id, createdAt: now, updatedAt: now }, this.defaults, entity);
     this.dispatchChange();
     if (this._localStorage) this._save();
   }
 
   update(id, updates) {
     const now = new Date();
-    this._data[id] = Object.assign({ updatedAt: now }, this._data[id], updates);
+    this._data[id] = assign({ updatedAt: now }, this._data[id], updates);
     this.dispatchChange();
     if (this._localStorage) this._save();
   }
