@@ -1,6 +1,10 @@
 # MicroStore
 micro store in es6 for client.
 
+## TODO
+
+- deprecate setData/getData
+
 ## Motivation
 I need micro store for learning some apps.
 
